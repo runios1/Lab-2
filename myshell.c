@@ -25,14 +25,12 @@ void execute(cmdLine *pCmdLine){
             fdOut=open(pCmdLine->outputRedirect,O_WRONLY,0777);
             dup2(fdOut,STDOUT_FILENO);
         }
-        if(strcmp(pCmdLine->arguments[0],"cd")==0){ //CHECK THIS
-            if(pid==0){
+        if(strcmp(pCmdLine->arguments[0],"cd")==0){
                 if(pCmdLine->argCount<2)
                     fprintf(stderr,"cd did not get a directody to change to.\n");
             
                 else if(chdir(pCmdLine->arguments[1])!=0)
                     fprintf(stderr,"chdir failed.\n");
-            }
         }else{
 
                 if(strcmp(pCmdLine->arguments[0],"suspend")==0){
